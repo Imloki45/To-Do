@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do</title>
+</head>
+<body>
+  <h1 align='center' style="color: black;">To-Do</h1>
+  <ul>
+  {% for i in dis%}
+   <li><h2 style="display: inline;">{{i.c}} by {{i.author}}</h2>&emsp;
+    <form style="display: inline;" action="/deltodo/{{i.id}}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Delete">
+    </form>
+  </li>
+  {% endfor %}
+  </ul>
+  <form action="/atodo" method="post">
+    {% csrf_token %}
+    <input type="text" name="content" placeholder="Enter the content to add">
+    <input type="text" name="author" placeholder="Enter your name">
+    <input type="submit" value="Add">
+  </form>
+</body>
+</html>
